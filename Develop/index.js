@@ -8,12 +8,30 @@ const questions = [
     {
         type: 'input', 
         name: 'title', 
-        message: 'What is your project title?',
+        message: 'What is your project title? (Required)',
+        validate: titleInput => {
+            if (titleInput) {
+                return true; 
+            }
+            else {
+                console.log('Please enter the title of your project!');
+                return false;
+            }
+        }
     },
     { 
         type: 'input', 
         name: 'description', 
         message: 'Please enter the description for your project.',
+        validate: descriptionInput => {
+            if (descriptionInput) {
+                return true;
+            }
+            else {
+                console.log('Please enter a description of your project!');
+                return false;
+            }
+        }
     },
     {
         type: 'input', 
@@ -45,11 +63,29 @@ const questions = [
         type: 'input', 
         name: 'username', 
         message: 'What is your Github username?',
+        validate: usernameInput => {
+            if (usernameInput) {
+                return true;
+            }
+            else {
+                console.log('Please insert your Github username!');
+                return false;
+            }
+        }
     }, 
     {
         type: 'input', 
         name: 'email', 
         message: "Enter your email address.",
+        validate: emailInput => {
+            if (emailInput) {
+                return true;
+            }
+            else {
+                console.log('Please provide you email!');
+                return false;
+            }
+        }
     },
 ];
 
@@ -64,14 +100,14 @@ function init() {
 }
 
 // function call to initialize program
-init().then(answers => console.log(answers));
+init().then(answers => console.log(answers))
 
 
 
 
 // pseudo code 
 
-// create array of questions to prompt the user
+// create array of questions to prompt the user (check)
 
 // capture the input from the user
 

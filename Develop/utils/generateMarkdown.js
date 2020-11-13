@@ -45,4 +45,3 @@ function generateMarkdown(data) {
 } 
 
 module.exports = generateMarkdown;
-console.log(data.username);

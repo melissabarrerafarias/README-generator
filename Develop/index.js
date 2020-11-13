@@ -90,23 +90,26 @@ const questions = [
 ];
 
 // function to write README file
-function writeToFile(fileName, data) {
-    const fileReadMe = generateMarkdown();
-    fs.writeFile('./README.md', fileReadMe, function (err) {
-        if (err) {
-            throw err;
-        };
+// function writeToFile(fileName, data) {
+//     fs.writeFile('./README.md', generateMarkdown(fileName, data), err => {
+//         if (err) throw err;
 
-        console.log("README created!");
-    });
-}
+//         console.log("README created!");
+//     });
+// }
 
 // function to initialize program
 function init() {
     return inquirer.prompt(questions)
-    .then(answers => console.log(answers));
-}
-
+    .then(answers => {
+        const README = generateMarkdown(answers);
+        fs.writeFile('./README.md', README, err => {
+            if (err) throw err;
+    
+            console.log("README created!");
+        });
+    })
+};
 // function call to initialize program
 init();
 
